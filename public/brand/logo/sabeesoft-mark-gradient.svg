@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192" role="img" aria-labelledby="t d">
+  <title id="t">Sabeesoft</title>
+  <desc id="d">Sabeesoft mark: staggered code-line bars forming an S.</desc>
+  <defs><linearGradient id="g" gradientUnits="userSpaceOnUse" x1="26" y1="17" x2="166" y2="175"><stop offset="0" stop-color="#004D7F"/><stop offset="1" stop-color="#00C4C9"/></linearGradient></defs>
+  <g fill="url(#g)">
+    <rect x="54" y="17" width="112" height="22" rx="3"/>
+    <rect x="30" y="51" width="52" height="22" rx="3"/>
+    <rect x="38" y="85" width="116" height="22" rx="3"/>
+    <rect x="110" y="119" width="56" height="22" rx="3"/>
+    <rect x="26" y="153" width="112" height="22" rx="3"/>
+  </g>
+</svg>
