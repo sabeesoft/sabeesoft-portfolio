@@ -25,7 +25,7 @@ export function SiteHeader({
   ];
 
   return (
-    <header className="sticky top-0 z-30 border-b border-white/6 bg-background/[0.72] backdrop-blur-[14px]">
+    <header className="sticky top-0 z-30 border-b border-white/6 bg-background/92 lg:bg-background/[0.72] lg:backdrop-blur-[14px]">
       <div className="mx-auto flex max-w-[1240px] items-center justify-between gap-4 px-5 py-3.5 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:gap-8 lg:px-12 lg:py-5">
         <Link href={`/${lang}`} className="block justify-self-start">
           <Logo className="h-[22px] w-auto lg:h-[26px]" />
