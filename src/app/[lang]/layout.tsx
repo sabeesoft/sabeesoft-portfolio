@@ -1,11 +1,14 @@
 import type { Viewport } from "next";
 import { Outfit, IBM_Plex_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { locales, isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import "../globals.css";
+
+const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
 const outfit = Outfit({
   subsets: ["latin", "latin-ext"],
@@ -48,6 +51,9 @@ export default async function RootLayout({
           {children}
           <SiteFooter lang={lang} dict={dict.footer} services={dict.services.items} />
         </div>
+        {gaId && process.env.NODE_ENV === "production" && (
+          <GoogleAnalytics gaId={gaId} />
+        )}
       </body>
     </html>
   );
