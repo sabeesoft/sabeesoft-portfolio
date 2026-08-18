@@ -8,8 +8,13 @@ import {
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-const FROM = process.env.CONTACT_FROM_EMAIL!;
+const FROM_ADDRESS = process.env.CONTACT_FROM_EMAIL!;
 const TO = process.env.CONTACT_TO_EMAIL!;
+
+// Customer-facing sender identity.
+const CUSTOMER_FROM = `Sabeesoft <${FROM_ADDRESS}>`;
+// Internal alerts get a bracketed name so they stand out from customer mail in the inbox.
+const INTERNAL_FROM = `"[Sabeesoft]" <${FROM_ADDRESS}>`;
 
 export async function sendInternalNotification(submission: {
   name: string;
@@ -19,10 +24,10 @@ export async function sendInternalNotification(submission: {
   locale: string;
 }) {
   const { error } = await resend.emails.send({
-    from: FROM,
+    from: INTERNAL_FROM,
     to: TO,
     replyTo: submission.email,
-    subject: `New inquiry: ${submission.kind}`,
+    subject: `[Sabeesoft] New inquiry: ${submission.kind}`,
     html: notificationEmailHtml(submission),
     text: notificationEmailText(submission),
   });
@@ -36,7 +41,7 @@ export async function sendConfirmation(submission: {
   body: string;
 }) {
   const { error } = await resend.emails.send({
-    from: FROM,
+    from: CUSTOMER_FROM,
     to: submission.email,
     subject: submission.subject,
     html: confirmationEmailHtml(submission),
