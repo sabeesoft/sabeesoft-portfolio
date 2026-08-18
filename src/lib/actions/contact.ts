@@ -6,13 +6,7 @@ import { sql } from "@/lib/db";
 import { sendConfirmation, sendInternalNotification } from "@/lib/email";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
-
-export type ContactFormState = {
-  status: "idle" | "success" | "error";
-  errors?: Partial<Record<"name" | "email" | "brief" | "consent" | "form", string>>;
-};
-
-export const initialContactFormState: ContactFormState = { status: "idle" };
+import type { ContactFormState } from "@/lib/actions/contact-state";
 
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
 const RATE_LIMIT_MAX = 5;
@@ -90,7 +84,7 @@ export async function submitContactForm(
       VALUES (${name}, ${email}, ${kind}, ${brief}, ${lang}, true)
     `;
   } catch (error) {
-    console.error("contact form: failed to save submission", error);
+    console.error("[contact-form] db insert failed", { email, kind, ip }, error);
     return { status: "error", errors: { form: dict.errors.generic } };
   }
 
@@ -104,10 +98,18 @@ export async function submitContactForm(
     }),
   ]);
   if (notification.status === "rejected") {
-    console.error("contact form: failed to send internal notification", notification.reason);
+    console.error(
+      "[contact-form] internal notification email failed",
+      { email, kind },
+      notification.reason
+    );
   }
   if (confirmation.status === "rejected") {
-    console.error("contact form: failed to send confirmation email", confirmation.reason);
+    console.error(
+      "[contact-form] confirmation email failed",
+      { email, kind },
+      confirmation.reason
+    );
   }
 
   return { status: "success" };

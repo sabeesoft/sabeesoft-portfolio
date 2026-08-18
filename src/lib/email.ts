@@ -18,7 +18,7 @@ export async function sendInternalNotification(submission: {
   message: string;
   locale: string;
 }) {
-  await resend.emails.send({
+  const { error } = await resend.emails.send({
     from: FROM,
     to: TO,
     replyTo: submission.email,
@@ -26,6 +26,7 @@ export async function sendInternalNotification(submission: {
     html: notificationEmailHtml(submission),
     text: notificationEmailText(submission),
   });
+  if (error) throw error;
 }
 
 export async function sendConfirmation(submission: {
@@ -34,11 +35,12 @@ export async function sendConfirmation(submission: {
   subject: string;
   body: string;
 }) {
-  await resend.emails.send({
+  const { error } = await resend.emails.send({
     from: FROM,
     to: submission.email,
     subject: submission.subject,
     html: confirmationEmailHtml(submission),
     text: confirmationEmailText(submission),
   });
+  if (error) throw error;
 }

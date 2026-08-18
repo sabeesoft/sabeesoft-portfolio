@@ -8,10 +8,12 @@ import {
   GitBranch,
   CheckCircle2,
   ArrowUpRight,
+  Loader2,
 } from "lucide-react";
 import type { Dictionary } from "@/lib/i18n/types";
 import type { Locale } from "@/lib/i18n/config";
-import { submitContactForm, initialContactFormState } from "@/lib/actions/contact";
+import { submitContactForm } from "@/lib/actions/contact";
+import { initialContactFormState } from "@/lib/actions/contact-state";
 import { ObfuscatedEmail } from "./obfuscated-email";
 
 const trustIcons = [Clock, FileCheck, GitBranch];
@@ -104,7 +106,15 @@ export function ContactSection({
           </div>
         </div>
 
-        <div className="rounded-xl border border-white/16 bg-[#041A28]/42 p-6 backdrop-blur-sm lg:p-8">
+        <div className="relative overflow-hidden rounded-xl border border-white/16 bg-[#041A28]/42 p-6 backdrop-blur-sm lg:p-8">
+          <div
+            className="absolute inset-x-0 top-0 h-[2px] overflow-hidden bg-white/10"
+            aria-hidden="true"
+          >
+            {pending && (
+              <div className="h-full w-1/4 bg-gradient-to-r from-transparent via-[#8FE7EA] to-transparent animate-progress-bar" />
+            )}
+          </div>
           <div className="grid">
             <div
               className={`col-start-1 row-start-1 grid self-start gap-3.5 justify-items-start py-6 transition-opacity duration-300 lg:gap-4 ${
@@ -133,8 +143,13 @@ export function ContactSection({
               action={formAction}
               onSubmit={handleSubmit}
               aria-hidden={sent}
-              className={`col-start-1 row-start-1 grid self-start gap-4.5 transition-opacity duration-300 lg:gap-[22px] ${
-                sent ? "invisible opacity-0" : "opacity-100"
+              inert={pending || undefined}
+              className={`col-start-1 row-start-1 grid self-start gap-4.5 transition-[opacity,filter] duration-300 lg:gap-[22px] ${
+                sent
+                  ? "invisible opacity-0"
+                  : pending
+                    ? "opacity-70 saturate-50"
+                    : "opacity-100"
               }`}
             >
               <input type="hidden" name="locale" value={lang} />
@@ -261,7 +276,11 @@ export function ContactSection({
                   className="flex min-h-13 items-center justify-center gap-2.5 rounded-md bg-white px-6.5 text-base font-medium text-blue-700 transition-colors hover:bg-teal-300 hover:text-[#06304E] disabled:opacity-60 lg:inline-flex lg:min-h-0 lg:py-3.5"
                 >
                   {pending ? dict.form.submitting : dict.form.submit}
-                  <ArrowUpRight size={17} strokeWidth={2} />
+                  {pending ? (
+                    <Loader2 size={17} strokeWidth={2} className="animate-spin" />
+                  ) : (
+                    <ArrowUpRight size={17} strokeWidth={2} />
+                  )}
                 </button>
                 <span className="text-center text-[13px] font-light text-white/50">
                   {dict.form.note}
