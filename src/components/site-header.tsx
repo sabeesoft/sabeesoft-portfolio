@@ -47,7 +47,7 @@ export function SiteHeader({
           <LanguageSwitcher lang={lang} label={dict.languageLabel} />
           <Link
             href={`/${lang}#contact`}
-            className="inline-flex items-center gap-2 rounded-md bg-gradient-to-r from-blue-700 to-teal-300 px-4 py-2.5 text-[14px] font-medium text-white transition-[filter] hover:brightness-110 lg:px-5 lg:text-[14.5px]"
+            className="hidden items-center gap-2 whitespace-nowrap rounded-md bg-gradient-to-r from-blue-700 to-teal-300 px-4 py-2.5 text-[14px] font-medium text-white transition-[filter] hover:brightness-110 lg:inline-flex lg:px-5 lg:text-[14.5px]"
           >
             {dict.cta}
           </Link>
@@ -78,6 +78,13 @@ export function SiteHeader({
               {item.label}
             </Link>
           ))}
+          <Link
+            href={`/${lang}#contact`}
+            onClick={() => setMenuOpen(false)}
+            className="mt-3 inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-gradient-to-r from-blue-700 to-teal-300 px-4 text-[15px] font-medium text-white"
+          >
+            {dict.cta}
+          </Link>
         </nav>
       )}
     </header>
