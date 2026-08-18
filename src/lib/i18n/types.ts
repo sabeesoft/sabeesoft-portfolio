@@ -78,9 +78,19 @@ export type Dictionary = {
       emailPlaceholder: string;
       briefLabel: string;
       briefPlaceholder: string;
+      consent: { before: string; linkLabel: string; after: string };
       submit: string;
+      submitting: string;
       note: string;
+      errors: {
+        name: string;
+        email: string;
+        brief: string;
+        consent: string;
+        generic: string;
+      };
       success: { title: string; body: string; reset: string };
+      confirmationEmail: { subject: string; body: string };
     };
   };
   footer: {

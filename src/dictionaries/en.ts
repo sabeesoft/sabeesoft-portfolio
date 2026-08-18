@@ -171,12 +171,29 @@ const en = {
       briefLabel: "The brief",
       briefPlaceholder:
         "What should it do, who is it for, and what is the deadline?",
+      consent: {
+        before: "I agree that Sabeesoft may process the details above to reply to my inquiry. See the ",
+        linkLabel: "Privacy Policy",
+        after: ".",
+      },
       submit: "Send the brief",
+      submitting: "Sending…",
       note: "No newsletter. No CRM drip.",
+      errors: {
+        name: "Please enter your name.",
+        email: "Please enter a valid email address.",
+        brief: "Tell us a little about the project.",
+        consent: "Please accept the privacy notice to continue.",
+        generic: "Something went wrong. Please try again or email us directly.",
+      },
       success: {
         title: "Brief received.",
         body: "We read every one ourselves. Expect a reply from a developer, not a form letter, within two working days.",
         reset: "Send another",
+      },
+      confirmationEmail: {
+        subject: "We received your message",
+        body: "Hi {name},\n\nThanks for reaching out. We read every brief ourselves and will get back to you within two working days.\n\nBest,\nSabeesoft",
       },
     },
   },

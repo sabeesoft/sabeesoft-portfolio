@@ -37,7 +37,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       <SectionDivider index={dict.process.eyebrow} label={dict.sectionLabels.process} />
       <ProcessSection dict={dict.process} />
       <SectionDivider index={dict.contact.eyebrow} label={dict.sectionLabels.contact} />
-      <ContactSection dict={dict.contact} />
+      <ContactSection dict={dict.contact} lang={lang} />
     </>
   );
 }

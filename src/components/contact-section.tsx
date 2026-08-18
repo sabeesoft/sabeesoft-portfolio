@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useActionState, useState } from "react";
+import Link from "next/link";
 import {
   Clock,
   FileCheck,
@@ -9,30 +10,45 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 import type { Dictionary } from "@/lib/i18n/types";
+import type { Locale } from "@/lib/i18n/config";
+import { submitContactForm, initialContactFormState } from "@/lib/actions/contact";
 import { ObfuscatedEmail } from "./obfuscated-email";
 
 const trustIcons = [Clock, FileCheck, GitBranch];
 
-export function ContactSection({ dict }: { dict: Dictionary["contact"] }) {
+export function ContactSection({
+  dict,
+  lang,
+}: {
+  dict: Dictionary["contact"];
+  lang: Locale;
+}) {
+  const [state, formAction, pending] = useActionState(
+    submitContactForm,
+    initialContactFormState
+  );
   const [kind, setKind] = useState(dict.form.kinds[0]);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [brief, setBrief] = useState("");
-  const [sent, setSent] = useState(false);
+  const [startedAt] = useState(() => Date.now());
+  const [dismissed, setDismissed] = useState(false);
 
-  function handleSubmit(event: FormEvent) {
-    event.preventDefault();
-    (document.activeElement as HTMLElement | null)?.blur();
-    setSent(true);
+  function handleSubmit() {
+    setDismissed(false);
   }
 
   function reset() {
     (document.activeElement as HTMLElement | null)?.blur();
-    setSent(false);
+    setDismissed(true);
+    setKind(dict.form.kinds[0]);
     setName("");
     setEmail("");
     setBrief("");
   }
+
+  const sent = state.status === "success" && !dismissed;
+  const errors = state.status === "error" ? state.errors : undefined;
 
   return (
     <section
@@ -114,12 +130,26 @@ export function ContactSection({ dict }: { dict: Dictionary["contact"] }) {
             </div>
 
             <form
+              action={formAction}
               onSubmit={handleSubmit}
               aria-hidden={sent}
               className={`col-start-1 row-start-1 grid self-start gap-4.5 transition-opacity duration-300 lg:gap-[22px] ${
                 sent ? "invisible opacity-0" : "opacity-100"
               }`}
             >
+              <input type="hidden" name="locale" value={lang} />
+              <input type="hidden" name="kind" value={kind} />
+              <input type="hidden" name="startedAt" value={startedAt} />
+              <input
+                type="text"
+                name="company"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                className="absolute h-0 w-0 opacity-0"
+                style={{ left: "-9999px" }}
+              />
+
               <div className="grid gap-2">
                 <label className="font-mono text-[10.5px] tracking-[0.1em] text-white/55 uppercase lg:text-[11px]">
                   {dict.form.kindLabel}
@@ -152,11 +182,16 @@ export function ContactSection({ dict }: { dict: Dictionary["contact"] }) {
                   </label>
                   <input
                     type="text"
+                    name="name"
+                    required
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder={dict.form.namePlaceholder}
                     className="min-h-12 w-full rounded-md border border-white/18 bg-black/22 px-3.5 text-base text-white outline-none focus:border-teal-300"
                   />
+                  {errors?.name && (
+                    <span className="text-[13px] text-red-300">{errors.name}</span>
+                  )}
                 </div>
                 <div className="grid gap-2">
                   <label className="font-mono text-[10.5px] tracking-[0.1em] text-white/55 uppercase lg:text-[11px]">
@@ -164,11 +199,16 @@ export function ContactSection({ dict }: { dict: Dictionary["contact"] }) {
                   </label>
                   <input
                     type="email"
+                    name="email"
+                    required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder={dict.form.emailPlaceholder}
                     className="min-h-12 w-full rounded-md border border-white/18 bg-black/22 px-3.5 text-base text-white outline-none focus:border-teal-300"
                   />
+                  {errors?.email && (
+                    <span className="text-[13px] text-red-300">{errors.email}</span>
+                  )}
                 </div>
               </div>
 
@@ -177,26 +217,59 @@ export function ContactSection({ dict }: { dict: Dictionary["contact"] }) {
                   {dict.form.briefLabel}
                 </label>
                 <textarea
+                  name="brief"
+                  required
                   rows={4}
                   value={brief}
                   onChange={(e) => setBrief(e.target.value)}
                   placeholder={dict.form.briefPlaceholder}
                   className="w-full resize-y rounded-md border border-white/18 bg-black/22 px-3.5 py-3.5 text-base leading-[1.5] text-white outline-none focus:border-teal-300"
                 />
+                {errors?.brief && (
+                  <span className="text-[13px] text-red-300">{errors.brief}</span>
+                )}
+              </div>
+
+              <div className="grid gap-1.5">
+                <label className="flex items-start gap-2.5 text-[13px] leading-[1.5] font-light text-white/70">
+                  <input
+                    type="checkbox"
+                    name="consent"
+                    required
+                    className="mt-0.5 h-4 w-4 shrink-0 accent-teal-300"
+                  />
+                  <span>
+                    {dict.form.consent.before}
+                    <Link
+                      href={`/${lang}/privacy`}
+                      className="underline decoration-white/30 underline-offset-2 transition-colors hover:text-teal-300"
+                    >
+                      {dict.form.consent.linkLabel}
+                    </Link>
+                    {dict.form.consent.after}
+                  </span>
+                </label>
+                {errors?.consent && (
+                  <span className="text-[13px] text-red-300">{errors.consent}</span>
+                )}
               </div>
 
               <div className="flex flex-wrap items-center justify-between gap-5">
                 <button
                   type="submit"
-                  className="flex min-h-13 items-center justify-center gap-2.5 rounded-md bg-white px-6.5 text-base font-medium text-blue-700 transition-colors hover:bg-teal-300 hover:text-[#06304E] lg:inline-flex lg:min-h-0 lg:py-3.5"
+                  disabled={pending}
+                  className="flex min-h-13 items-center justify-center gap-2.5 rounded-md bg-white px-6.5 text-base font-medium text-blue-700 transition-colors hover:bg-teal-300 hover:text-[#06304E] disabled:opacity-60 lg:inline-flex lg:min-h-0 lg:py-3.5"
                 >
-                  {dict.form.submit}
+                  {pending ? dict.form.submitting : dict.form.submit}
                   <ArrowUpRight size={17} strokeWidth={2} />
                 </button>
                 <span className="text-center text-[13px] font-light text-white/50">
                   {dict.form.note}
                 </span>
               </div>
+              {errors?.form && (
+                <span className="text-[13px] text-red-300">{errors.form}</span>
+              )}
             </form>
           </div>
         </div>
