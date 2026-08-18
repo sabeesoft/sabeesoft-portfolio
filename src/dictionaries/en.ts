@@ -196,10 +196,18 @@ const en = {
     hours: "Remote-first, CET hours",
     privacy: "Privacy",
     legalNotice: "Legal notice",
+    cookiePreferences: "Cookie preferences",
   },
   common: {
     backToHome: "Back to sabeesoft.com",
     lastUpdated: "Last updated",
+  },
+  cookieConsent: {
+    message:
+      "We use a functional cookie to remember your language, and — only if you accept — Google Analytics to see how people find and use this site.",
+    accept: "Accept",
+    decline: "Decline",
+    privacyLink: "Privacy Policy",
   },
   legalNotice: {
     eyebrow: "Legal",
@@ -245,7 +253,7 @@ const en = {
     whatWeCollect: {
       title: "What we collect",
       body1:
-        "We don't run analytics, ads, or tracking scripts on this site. There are no cookies here to consent to.",
+        "We use one functional cookie to remember your language choice. If you accept it in the banner, we also use Google Analytics to understand traffic — you can change that choice anytime via \"Cookie preferences\" in the footer. We don't run ads or any other tracking.",
       body2:
         "The only data we collect is what you type into the contact form: your name, your work email, what you're building, and your brief. That's it.",
     },

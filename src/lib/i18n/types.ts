@@ -98,10 +98,17 @@ export type Dictionary = {
     hours: string;
     privacy: string;
     legalNotice: string;
+    cookiePreferences: string;
   };
   common: {
     backToHome: string;
     lastUpdated: string;
+  };
+  cookieConsent: {
+    message: string;
+    accept: string;
+    decline: string;
+    privacyLink: string;
   };
   legalNotice: {
     eyebrow: string;

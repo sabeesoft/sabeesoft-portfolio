@@ -1,11 +1,12 @@
 import type { Viewport } from "next";
 import { Outfit, IBM_Plex_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
-import { GoogleAnalytics } from "@next/third-parties/google";
 import { locales, isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { Analytics } from "@/components/analytics";
+import { CookieConsentBanner } from "@/components/cookie-consent-banner";
 import "../globals.css";
 
 const gaId = process.env.NEXT_PUBLIC_GA_ID;
@@ -49,11 +50,15 @@ export default async function RootLayout({
         <div className="min-h-screen bg-background text-foreground">
           <SiteHeader lang={lang} dict={dict.header} />
           {children}
-          <SiteFooter lang={lang} dict={dict.footer} services={dict.services.items} />
+          <SiteFooter
+            lang={lang}
+            dict={dict.footer}
+            services={dict.services.items}
+            showCookiePreferences={Boolean(gaId)}
+          />
         </div>
-        {gaId && process.env.NODE_ENV === "production" && (
-          <GoogleAnalytics gaId={gaId} />
-        )}
+        {gaId && process.env.NODE_ENV === "production" && <Analytics gaId={gaId} />}
+        {gaId && <CookieConsentBanner lang={lang} dict={dict.cookieConsent} />}
       </body>
     </html>
   );

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Logo } from "./logo";
 import { ObfuscatedEmail } from "./obfuscated-email";
+import { CookiePreferencesButton } from "./cookie-preferences-button";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/types";
 
@@ -8,10 +9,12 @@ export function SiteFooter({
   lang,
   dict,
   services,
+  showCookiePreferences,
 }: {
   lang: Locale;
   dict: Dictionary["footer"];
   services: Dictionary["services"]["items"];
+  showCookiePreferences: boolean;
 }) {
   const studioLinks = [
     { href: `/${lang}#process`, label: dict.studioLinks.howWeWork },
@@ -90,6 +93,9 @@ export function SiteFooter({
           <Link href={`/${lang}/legal-notice`} className="transition-colors hover:text-teal-300">
             {dict.legalNotice}
           </Link>
+          {showCookiePreferences && (
+            <CookiePreferencesButton label={dict.cookiePreferences} />
+          )}
         </div>
       </div>
     </footer>

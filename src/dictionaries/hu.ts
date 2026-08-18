@@ -196,10 +196,18 @@ const hu = {
     hours: "Elsősorban távmunka, CET munkaidő",
     privacy: "Adatvédelem",
     legalNotice: "Impresszum",
+    cookiePreferences: "Süti beállítások",
   },
   common: {
     backToHome: "Vissza a sabeesoft.com-ra",
     lastUpdated: "Utoljára frissítve",
+  },
+  cookieConsent: {
+    message:
+      "Egy funkcionális sütit használunk a nyelvi beállításod megjegyzésére, és — csak ha elfogadod — Google Analytics-et, hogy lássuk, hogyan találnak ránk és hogyan használják az oldalt.",
+    accept: "Elfogadom",
+    decline: "Elutasítom",
+    privacyLink: "Adatvédelmi tájékoztató",
   },
   legalNotice: {
     eyebrow: "Jogi",
@@ -245,7 +253,7 @@ const hu = {
     whatWeCollect: {
       title: "Milyen adatot gyűjtünk",
       body1:
-        "Az oldalon nem használunk analitikát, hirdetéseket vagy nyomkövető szkripteket. Nincsenek sütik, amelyekhez hozzájárulást kellene kérnünk.",
+        "Egy funkcionális sütit használunk a nyelvi beállításod megjegyzésére. Ha ezt a bannerben elfogadod, Google Analytics-et is használunk a látogatottság megértésére — ezt a döntésedet bármikor megváltoztathatod a lábléc „Süti beállítások” pontján keresztül. Hirdetést vagy más nyomkövetést nem alkalmazunk.",
       body2:
         "Az egyetlen adat, amit gyűjtünk, amit a kapcsolatfelvételi űrlapba beírsz: a neved, a munkahelyi e-mail címed, hogy mit építesz, és a briefed. Ennyi.",
     },
