@@ -65,6 +65,16 @@ export function SiteFooter({
               label={dict.contactLinkLabel}
               className="text-[15px] text-foreground/62 transition-colors hover:text-teal-300 lg:hidden"
             />
+
+            <div className="mt-4 font-mono text-[10.5px] tracking-[0.12em] text-foreground/35 uppercase lg:mt-5 lg:text-[11px]">
+              {dict.productsHeading}
+            </div>
+            <Link
+              href={`/${lang}/loglens`}
+              className="text-[15px] text-foreground/62 transition-colors hover:text-teal-300"
+            >
+              {dict.loglensLabel}
+            </Link>
           </div>
         </div>
 

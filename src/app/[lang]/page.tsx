@@ -6,6 +6,7 @@ import { Hero } from "@/components/hero";
 import { SectionDivider } from "@/components/section-divider";
 import { ServicesSection } from "@/components/services-section";
 import { WorkSection } from "@/components/work-section";
+import { ProductsSection } from "@/components/products-section";
 import { ProcessSection } from "@/components/process-section";
 import { ContactSection } from "@/components/contact-section";
 
@@ -34,6 +35,8 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       <ServicesSection dict={dict.services} />
       <SectionDivider index={dict.work.eyebrow} label={dict.sectionLabels.work} />
       <WorkSection dict={dict.work} />
+      <SectionDivider index={dict.products.eyebrow} label={dict.sectionLabels.products} />
+      <ProductsSection dict={dict.products} lang={lang} />
       <SectionDivider index={dict.process.eyebrow} label={dict.sectionLabels.process} />
       <ProcessSection dict={dict.process} />
       <SectionDivider index={dict.contact.eyebrow} label={dict.sectionLabels.contact} />

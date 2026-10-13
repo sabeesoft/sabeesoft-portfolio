@@ -5,9 +5,16 @@ export type Dictionary = {
     home: { title: string; description: string };
     legalNotice: { title: string; description: string };
     privacy: { title: string; description: string };
+    loglens: { title: string; description: string };
   };
   header: {
-    nav: { services: string; work: string; process: string; contact: string };
+    nav: {
+      services: string;
+      work: string;
+      products: string;
+      process: string;
+      contact: string;
+    };
     cta: string;
     menuLabel: string;
     languageLabel: string;
@@ -28,6 +35,7 @@ export type Dictionary = {
   sectionLabels: {
     services: string;
     work: string;
+    products: string;
     process: string;
     contact: string;
   };
@@ -54,6 +62,18 @@ export type Dictionary = {
     }[];
     stats: { value: string; label: string }[];
     techStackLabel: string;
+  };
+  products: {
+    eyebrow: string;
+    title: string;
+    subtitle: string;
+    item: {
+      name: string;
+      tagline: string;
+      body: string;
+      tags: string[];
+      cta: string;
+    };
   };
   process: {
     eyebrow: string;
@@ -109,6 +129,8 @@ export type Dictionary = {
     privacy: string;
     legalNotice: string;
     cookiePreferences: string;
+    productsHeading: string;
+    loglensLabel: string;
   };
   common: {
     backToHome: string;
@@ -131,6 +153,24 @@ export type Dictionary = {
     liability: { title: string; body: string };
     governingLaw: { title: string; body: string };
     contact: { title: string; suffix: string };
+  };
+  loglens: {
+    eyebrow: string;
+    title: string;
+    tagline: string;
+    subtitle: string;
+    ctaMarketplace: string;
+    ctaGithub: string;
+    screenshotAlt: string;
+    screenshotCaption: string;
+    surfacesLabel: string;
+    surfacesTitle: string;
+    surfaces: { name: string; body: string }[];
+    featuresLabel: string;
+    featuresTitle: string;
+    features: { title: string; body: string }[];
+    privacy: { label: string; title: string; body: string; points: string[] };
+    closing: { title: string; body: string };
   };
   privacy: {
     eyebrow: string;

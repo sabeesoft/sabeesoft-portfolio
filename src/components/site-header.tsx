@@ -20,6 +20,7 @@ export function SiteHeader({
   const navItems = [
     { href: `/${lang}#services`, label: dict.nav.services },
     { href: `/${lang}#work`, label: dict.nav.work },
+    { href: `/${lang}#products`, label: dict.nav.products },
     { href: `/${lang}#process`, label: dict.nav.process },
     { href: `/${lang}#contact`, label: dict.nav.contact },
   ];
