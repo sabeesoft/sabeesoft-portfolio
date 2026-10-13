@@ -17,11 +17,17 @@ const hu = {
       description:
         "Hogyan gyűjti, használja és védi a Sabeesoft az oldalon keresztül megadott adatokat.",
     },
+    loglens: {
+      title: "Log Lens — privát naplónéző VS Code-hoz",
+      description:
+        "A Log Lens nyílt forrású naplónéző JSON, NDJSON és CSV fájlokhoz — VS Code bővítmény, webalkalmazás és PWA. Privát felépítésből adódóan: a naplóid soha nem hagyják el a géped.",
+    },
   },
   header: {
     nav: {
       services: "Szolgáltatások",
       work: "Munkáink",
+      products: "Termékek",
       process: "Folyamat",
       contact: "Kapcsolat",
     },
@@ -46,6 +52,7 @@ const hu = {
   sectionLabels: {
     services: "Szolgáltatások",
     work: "Válogatott munkáink",
+    products: "Termékeink",
     process: "Hogyan dolgozunk",
     contact: "Projekt indítása",
   },
@@ -122,8 +129,20 @@ const hu = {
     ],
     techStackLabel: "Jellemzően:",
   },
-  process: {
+  products: {
     eyebrow: "03",
+    title: "Termékek",
+    subtitle: "Amit magunknak építünk, nyitva mindenkinek.",
+    item: {
+      name: "Log Lens",
+      tagline: "Privát felépítésből.",
+      body: "Nyílt forrású naplónéző JSON, NDJSON és CSV fájlokhoz — egyetlen motor a VS Code bővítményben, a webalkalmazásban és a telepíthető PWA-ban. Keress, kérdezz le és találd meg a kiugrást úgy, hogy a naplóid soha nem hagyják el a géped.",
+      tags: ["VS Code", "Nyílt forrás", "Apache-2.0"],
+      cta: "Log Lens felfedezése",
+    },
+  },
+  process: {
+    eyebrow: "04",
     title: "Hogyan dolgozunk",
     subtitle:
       "Három lépés, discovery-színház nélkül. A kód a legelső commit-tól a tiéd.",
@@ -151,7 +170,7 @@ const hu = {
     ],
   },
   contact: {
-    eyebrow: "04",
+    eyebrow: "05",
     label: "Projekt indítása",
     title: "Bízza ránk a nehezét.",
     paragraph:
@@ -214,6 +233,8 @@ const hu = {
     privacy: "Adatvédelem",
     legalNotice: "Impresszum",
     cookiePreferences: "Süti beállítások",
+    productsHeading: "Termékek",
+    loglensLabel: "Log Lens",
   },
   common: {
     backToHome: "Vissza a sabeesoft.com-ra",
@@ -257,6 +278,78 @@ const hu = {
     contact: {
       title: "Kapcsolat",
       suffix: " — Budapest, Magyarország.",
+    },
+  },
+  loglens: {
+    eyebrow: "Nyílt forrású · VS Code bővítmény",
+    title: "Log Lens",
+    tagline: "Privát felépítésből.",
+    subtitle:
+      "Könnyűsúlyú naplónéző JSON, NDJSON és CSV naplók olvasásához és lekérdezéséhez. Egy motor három felületet hajt — VS Code bővítmény, webalkalmazás és telepíthető PWA —, és a naplóid soha nem hagyják el a géped.",
+    ctaMarketplace: "Megnyitás a Marketplace-en",
+    ctaGithub: "Megnézem a GitHubon",
+    screenshotAlt:
+      "A Log Lens megnyitva a VS Code-ban: lekérdező sáv, szintenként rétegzett mennyiség-hisztogram és naplótáblázat kiemelt keresési találatokkal.",
+    screenshotCaption:
+      "Lekérdező mód a mennyiség-hisztogrammal és az élő keresési kiemeléssel.",
+    surfacesLabel: "Egy motor, három felület",
+    surfacesTitle: "Ott használod, ahol már dolgozol",
+    surfaces: [
+      {
+        name: "VS Code bővítmény",
+        body: "Megnyitható az Activity Barról, az Explorer helyi menüjéből vagy a Command Palette-ből. Egy állapotsor-elem mutatja a találatok és a feldolgozási hibák számát, valamint a felismert formátumot — és követi a színtémádat: sötét, világos és nagy kontraszt.",
+      },
+      {
+        name: "Webalkalmazás",
+        body: "Húzd rá, válassz fájlt, illeszd be a vágólapról, vagy nyiss meg egy korábbi fájlt. Több fájlt egyetlen nézetbe fűzhetsz, telepítés nélkül.",
+      },
+      {
+        name: "Telepíthető PWA",
+        body: "Telepítsd Chromium-alapú böngészőkben. Offline is működik, és .json, .ndjson, .log és .csv fájlokat nyit meg közvetlenül a gépedről.",
+      },
+    ],
+    featuresLabel: "Funkciók",
+    featuresTitle: "Megtalálod az egyetlen fontos sort",
+    features: [
+      {
+        title: "Keresés",
+        body: "Egyetlen mező illeszkedik az üzenetre és minden mezőre, a beágyazott értékeket is beleértve. A szint-chipek szint szerint szűrnek, és értik a numerikus Pino- és Bunyan-szinteket.",
+      },
+      {
+        title: "Lekérdező mód",
+        body: "CloudWatch Logs Insights-stílusú pipeline fields, filter, sort és limit lépésekkel — hibahelyekkel, gyorsjavításokkal és automatikus kiegészítéssel.",
+      },
+      {
+        title: "Mennyiség-hisztogram",
+        body: "Szintenként rétegzett idővonal a naplómennyiségről, így a hiba-kiugrások egy pillantásra látszanak.",
+      },
+      {
+        title: "Naplótáblázat",
+        body: "Nem tördelt sorok és színkódolt szint-oszlopok, részletek panellel, amely Raw, Pretty és Tree nézetet kínál.",
+      },
+      {
+        title: "Szűrők panel",
+        body: "Strukturált szűrők ÉS/VAGY kombinálással, egyéni sorrenddel, látható mezők kapcsolóival és a beágyazási mélység szabályozásával.",
+      },
+      {
+        title: "Elosztott trace-ek",
+        body: "Szolgáltatás-térkép, amely felismeri a trace- és span-mezőket, még az olyan konténereken belül is, mint a @message.",
+      },
+    ],
+    privacy: {
+      label: "Adatvédelem",
+      title: "A naplóid soha nem hagyják el a géped",
+      body: "A naplófájlok tele vannak éles titkokkal — tokenekkel, e-mail címekkel, ügyféladatokkal. A Log Lens mindent helyben dolgoz fel és kérdez le, így nincs mit feltölteni és nincs mi kiszivárogjon.",
+      points: [
+        "Nincs feltöltés, nincs szerver, nincs telemetria",
+        "A webalkalmazás connect-src 'none'-t állít be, így a böngésző minden hálózati kérést blokkol",
+        "Egy CI-ellenőrzés (check:no-network) elbuktatja a buildet, ha hálózati API kerül a forrásba",
+        "Nincs fiók, süti, analitika vagy harmadik féltől származó erőforrás",
+      ],
+    },
+    closing: {
+      title: "Nyílt forrású, Apache-2.0",
+      body: "Olvasd a kódot, nyiss hibajegyet vagy küldj javítást. A Log Lens ingyenes és nyílt a GitHubon.",
     },
   },
   privacy: {

@@ -16,11 +16,17 @@ const en = {
       description:
         "How Sabeesoft collects, uses and protects the information submitted through this site.",
     },
+    loglens: {
+      title: "Log Lens — a private log viewer for VS Code",
+      description:
+        "Log Lens is an open-source log viewer for JSON, NDJSON and CSV — a VS Code extension, web app and PWA. Private by design: your logs never leave your machine.",
+    },
   },
   header: {
     nav: {
       services: "Services",
       work: "Work",
+      products: "Products",
       process: "Process",
       contact: "Contact",
     },
@@ -45,6 +51,7 @@ const en = {
   sectionLabels: {
     services: "Services",
     work: "Selected work",
+    products: "Our products",
     process: "How we work",
     contact: "Start a project",
   },
@@ -121,8 +128,20 @@ const en = {
     ],
     techStackLabel: "Typically:",
   },
-  process: {
+  products: {
     eyebrow: "03",
+    title: "Products",
+    subtitle: "What we build for ourselves, open for everyone.",
+    item: {
+      name: "Log Lens",
+      tagline: "Private by design.",
+      body: "An open-source log viewer for JSON, NDJSON and CSV — one engine across a VS Code extension, a web app and an installable PWA. Search, query and find the spike without your logs ever leaving your machine.",
+      tags: ["VS Code", "Open source", "Apache-2.0"],
+      cta: "Explore Log Lens",
+    },
+  },
+  process: {
+    eyebrow: "04",
     title: "How we work",
     subtitle:
       "Three steps, no discovery theatre. You own the code from the first commit.",
@@ -150,7 +169,7 @@ const en = {
     ],
   },
   contact: {
-    eyebrow: "04",
+    eyebrow: "05",
     label: "Start a project",
     title: "Bring us the hard part.",
     paragraph:
@@ -214,6 +233,8 @@ const en = {
     privacy: "Privacy",
     legalNotice: "Legal notice",
     cookiePreferences: "Cookie preferences",
+    productsHeading: "Products",
+    loglensLabel: "Log Lens",
   },
   common: {
     backToHome: "Back to sabeesoft.com",
@@ -257,6 +278,78 @@ const en = {
     contact: {
       title: "Contact",
       suffix: " — Budapest, Hungary.",
+    },
+  },
+  loglens: {
+    eyebrow: "Open source · VS Code extension",
+    title: "Log Lens",
+    tagline: "Private by design.",
+    subtitle:
+      "A lightweight log viewer for reading and querying JSON, NDJSON and CSV logs. One engine powers three surfaces — a VS Code extension, a web app and an installable PWA — and your logs never leave your machine.",
+    ctaMarketplace: "Open in Marketplace",
+    ctaGithub: "View on GitHub",
+    screenshotAlt:
+      "Log Lens open in VS Code: a query bar, a level-stacked volume histogram and a log table with search matches highlighted.",
+    screenshotCaption:
+      "Query mode with the volume histogram and live search highlighting.",
+    surfacesLabel: "One engine, three surfaces",
+    surfacesTitle: "Use it where you already work",
+    surfaces: [
+      {
+        name: "VS Code extension",
+        body: "Open from the Activity Bar, the Explorer context menu or the Command Palette. A status bar item shows match count, parse errors and the detected format, and it follows your color theme — dark, light and high contrast.",
+      },
+      {
+        name: "Web app",
+        body: "Drag and drop, pick a file, paste from the clipboard or reopen a recent file. Merge several files into one view, with no install required.",
+      },
+      {
+        name: "Installable PWA",
+        body: "Install it in Chromium browsers. It works offline and opens .json, .ndjson, .log and .csv files straight from your machine.",
+      },
+    ],
+    featuresLabel: "Features",
+    featuresTitle: "Find the one line that matters",
+    features: [
+      {
+        title: "Search",
+        body: "One input matches the message and every field, including nested values. Level chips filter by level and understand numeric Pino and Bunyan levels.",
+      },
+      {
+        title: "Query mode",
+        body: "A CloudWatch Logs Insights-style pipeline with fields, filter, sort and limit — plus error locations, quick fixes and autocomplete.",
+      },
+      {
+        title: "Volume histogram",
+        body: "A level-stacked timeline of log volume, so error spikes show up at a glance.",
+      },
+      {
+        title: "Log table",
+        body: "Non-wrapping rows and color-coded level columns, with a details panel offering Raw, Pretty and Tree views.",
+      },
+      {
+        title: "Filters panel",
+        body: "Structured filters combined with AND/OR, custom ordering, visible-field toggles and nesting-depth control.",
+      },
+      {
+        title: "Distributed traces",
+        body: "A service map that detects trace and span fields, including inside containers like @message.",
+      },
+    ],
+    privacy: {
+      label: "Privacy",
+      title: "Your logs never leave your machine",
+      body: "Log files are full of production secrets — tokens, emails, customer records. Log Lens parses and queries everything locally, so there is nothing to upload and nothing to leak.",
+      points: [
+        "No uploads, no servers, no telemetry",
+        "The web app sets connect-src 'none', so the browser blocks every network request",
+        "A CI check (check:no-network) fails the build if network APIs appear in the source",
+        "No accounts, cookies, analytics or third-party resources",
+      ],
+    },
+    closing: {
+      title: "Open source, Apache-2.0",
+      body: "Read the code, file an issue or ship a fix. Log Lens is free and open on GitHub.",
     },
   },
   privacy: {

@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { locales } from "@/lib/i18n/config";
 
 const SITE_URL = "https://sabeesoft.com";
-const PATHS = ["", "/legal-notice", "/privacy"];
+const PATHS = ["", "/loglens", "/legal-notice", "/privacy"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return PATHS.flatMap((path) =>
