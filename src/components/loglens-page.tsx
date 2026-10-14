@@ -22,6 +22,12 @@ export const LOGLENS_MARKETPLACE_URL =
   "https://marketplace.visualstudio.com/items?itemName=sabeesoft.log-lens";
 export const LOGLENS_GITHUB_URL = "https://github.com/sabeesoft/log-lens";
 
+const SCREENSHOTS = [
+  "/loglens/shot-search.webp",
+  "/loglens/shot-query.webp",
+  "/loglens/shot-details.webp",
+];
+
 const surfaceIcons: LucideIcon[] = [Code2, Globe, Download];
 const featureIcons: LucideIcon[] = [
   Search,
@@ -200,6 +206,78 @@ export function LogLensPage({
                 </div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* Screenshots */}
+      <section className="relative border-t border-white/6 bg-surface-dark px-5 py-14 lg:px-12 lg:py-24">
+        <div className="mx-auto max-w-[1240px]">
+          <div className="flex items-baseline gap-3.5 lg:gap-[18px]">
+            <span className="font-mono text-[11.5px] text-teal-300 lg:text-xs">
+              {dict.screenshots.label}
+            </span>
+            <h2 className="m-0 text-[28px] font-medium tracking-[-0.028em] text-white lg:text-4xl">
+              {dict.screenshots.title}
+            </h2>
+          </div>
+
+          <div className="mt-8 grid gap-6 lg:mt-11 lg:grid-cols-3 lg:gap-6">
+            {SCREENSHOTS.map((src, i) => (
+              <figure key={src} className="m-0">
+                <div className="overflow-hidden rounded-lg border border-white/10 bg-background">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={src}
+                    alt={dict.screenshots.items[i]?.caption ?? ""}
+                    width={960}
+                    height={540}
+                    loading="lazy"
+                    className="block h-auto w-full"
+                  />
+                </div>
+                <figcaption className="mt-2.5 font-mono text-[12px] text-foreground/40 lg:text-[12.5px]">
+                  {dict.screenshots.items[i]?.caption}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Installation */}
+      <section className="relative border-t border-white/6 px-5 py-14 lg:px-12 lg:py-24">
+        <div className="mx-auto max-w-[1240px]">
+          <div className="flex items-baseline gap-3.5 lg:gap-[18px]">
+            <span className="font-mono text-[11.5px] text-teal-300 lg:text-xs">
+              {dict.installation.label}
+            </span>
+            <h2 className="m-0 text-[28px] font-medium tracking-[-0.028em] text-white lg:text-4xl">
+              {dict.installation.title}
+            </h2>
+          </div>
+
+          <div className="mt-8 grid gap-px bg-white/7 lg:mt-11 lg:grid-cols-3">
+            {dict.installation.steps.map((step, i) => (
+              <div
+                key={step.title}
+                className="grid content-start gap-3 bg-surface-dark py-[26px] lg:gap-3.5 lg:px-8 lg:py-[34px]"
+              >
+                <span className="font-mono text-[13px] text-teal-300 lg:text-sm">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="m-0 text-[18px] leading-[1.3] font-medium tracking-[-0.015em] text-white lg:text-[19px]">
+                  {step.title}
+                </h3>
+                <p className="m-0 text-[15px] leading-[1.6] font-light text-foreground/55">
+                  {step.body}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-7 lg:mt-8">
+            <MarketplaceButton label={dict.ctaMarketplace} />
           </div>
         </div>
       </section>

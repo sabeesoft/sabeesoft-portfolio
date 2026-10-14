@@ -336,6 +336,33 @@ const en = {
         body: "A service map that detects trace and span fields, including inside containers like @message.",
       },
     ],
+    installation: {
+      label: "Install",
+      title: "Up and running in seconds",
+      steps: [
+        {
+          title: "From the Marketplace",
+          body: "Open the Extensions view in VS Code, search for “Log Lens” and click Install — or use the Open in Marketplace button above.",
+        },
+        {
+          title: "Or from Quick Open",
+          body: "Press Ctrl/Cmd+P and run: ext install sabeesoft.log-lens",
+        },
+        {
+          title: "Open your logs",
+          body: "Right-click a .json, .ndjson, .log or .csv file and choose “Open with Log Lens”, or open it from the Activity Bar or the Command Palette.",
+        },
+      ],
+    },
+    screenshots: {
+      label: "Screenshots",
+      title: "A look inside",
+      items: [
+        { caption: "Search with level filters and a volume histogram." },
+        { caption: "Query mode: filter and sort with a pipeline." },
+        { caption: "Inspect any record in the details panel." },
+      ],
+    },
     privacy: {
       label: "Privacy",
       title: "Your logs never leave your machine",
