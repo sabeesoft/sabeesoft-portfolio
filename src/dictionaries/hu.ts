@@ -336,6 +336,33 @@ const hu = {
         body: "Szolgáltatás-térkép, amely felismeri a trace- és span-mezőket, még az olyan konténereken belül is, mint a @message.",
       },
     ],
+    installation: {
+      label: "Telepítés",
+      title: "Pár másodperc alatt kész",
+      steps: [
+        {
+          title: "A Marketplace-ről",
+          body: "Nyisd meg az Extensions nézetet a VS Code-ban, keress rá a „Log Lens”-re, és kattints az Installra — vagy használd a fenti „Megnyitás a Marketplace-en” gombot.",
+        },
+        {
+          title: "Vagy a Quick Openből",
+          body: "Nyomd meg a Ctrl/Cmd+P-t, és futtasd: ext install sabeesoft.log-lens",
+        },
+        {
+          title: "Nyisd meg a naplóidat",
+          body: "Kattints jobb gombbal egy .json, .ndjson, .log vagy .csv fájlra, és válaszd az „Open with Log Lens”-t, vagy nyisd meg az Activity Barról vagy a Command Palette-ből.",
+        },
+      ],
+    },
+    screenshots: {
+      label: "Képernyőképek",
+      title: "Pillantás a motorháztető alá",
+      items: [
+        { caption: "Keresés szint-szűrőkkel és mennyiség-hisztogrammal." },
+        { caption: "Lekérdező mód: szűrés és rendezés pipeline-nal." },
+        { caption: "Bármely rekord megvizsgálása a részletek panelen." },
+      ],
+    },
     privacy: {
       label: "Adatvédelem",
       title: "A naplóid soha nem hagyják el a géped",

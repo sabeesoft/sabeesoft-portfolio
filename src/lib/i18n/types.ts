@@ -169,6 +169,16 @@ export type Dictionary = {
     featuresLabel: string;
     featuresTitle: string;
     features: { title: string; body: string }[];
+    installation: {
+      label: string;
+      title: string;
+      steps: { title: string; body: string }[];
+    };
+    screenshots: {
+      label: string;
+      title: string;
+      items: { caption: string }[];
+    };
     privacy: { label: string; title: string; body: string; points: string[] };
     closing: { title: string; body: string };
   };
